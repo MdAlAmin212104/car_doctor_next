@@ -13,8 +13,8 @@ const Banner = () => {
             className="carousel-item relative w-full h-[90vh] bg-top bg-no-repeat">
           <div className="h-full w-full flex items-center pl-36 text-white">
             <div className="space-y-6">
-                <h1 className="text-5xl font-bold">{banner.title}</h1>
-                <p>{banner.description}</p>
+                <h1 className="text-6xl font-bold w-[465px]">{banner.title}</h1>
+                <p className="w-[525px]">{banner.description}</p>
                 <button className="btn btn-primary mr-4">Discover More</button>
                 <button className="btn btn-primary btn-outline">Latest Project</button>
             </div>
