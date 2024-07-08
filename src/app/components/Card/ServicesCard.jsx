@@ -11,8 +11,8 @@ const ServicesCard = ({service}) => {
       <div className="card-body items-center text-center">
         <h2 className="card-title">S{title}</h2>
         <div className="card-actions flex justify-between items-center ">
-            <h6 className="text-primary font-bold">Price : ${price}</h6>
-            <button className="btn btn-primary">Buy Now</button>
+          <h6 className="text-primary font-bold mr-24">Price : ${price}</h6>
+          <button className="btn btn-primary">Buy Now</button>
         </div>
       </div>
     </div>
