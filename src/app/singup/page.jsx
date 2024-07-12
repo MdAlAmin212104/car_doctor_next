@@ -13,7 +13,18 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     }
-    console.log(newUser);
+    const resp = await fetch('http://localhost:3000/singup/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    })
+
+    console.log(resp);
+    if(resp.status === 200){
+      e.target.reset()
+    }
   }
 
   return (
