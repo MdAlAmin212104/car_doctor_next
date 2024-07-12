@@ -20,7 +20,7 @@ const page = () => {
             <form className=" mx-12">
             <div className="form-control my-6">
                 <label className="label">
-                <span className="label-text font-semibold">Email</span>
+                <span className="label-text font-semibold text-[18px]">Email</span>
                 </label>
                 <input
                 type="email"
@@ -31,7 +31,7 @@ const page = () => {
             </div>
             <div className="form-control">
                 <label className="label">
-                <span className="label-text font-semibold">Confirm Password</span>
+                <span className="label-text font-semibold text-[18px]">Confirm Password</span>
                 </label>
                 <input
                 type="password"
