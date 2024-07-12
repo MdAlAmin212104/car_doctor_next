@@ -1,33 +1,16 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
+import { useSession } from "next-auth/react";
 
 
 const Navbar = () => {
-  const navItem = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "About",
-      path: "/about",
-    },
-    {
-      name: "Services",
-      path: "/services",
-    },
-    {
-      name: "Blog",
-      path: "/blog",
-    },
-    {
-      name: "Contact",
-      path: "/contact",
-    },
-  ];
+  
+  const session = useSession();
+  console.log(session)
   return (
     <div className="bg-base-100">
       <div className="navbar container mx-auto">
@@ -80,11 +63,48 @@ const Navbar = () => {
                 <MdOutlineShoppingCart />
                 <IoMdSearch />
                 <a className="btn btn-primary btn-outline">Appointment</a>
+                {/* <div>
+            <Image alt={session?.data?.user?.name} src={session?.data?.user?.image} height={50} width={50} className="rounded-full"/>
+          </div> */}
+          { session?.status === 'loading' &&
+            <h6>Loading....</h6>
+            }
+          { session?.status === 'unauthenticated' &&
+            <Link href="/login" className="btn btn-primary px-8">Login</Link>
+            }
+          { session?.status === 'authenticated' &&
+            <button className="btn btn-outline btn-ghost px-8" onClick={() => signOut()}>Logout</button>
+            }
             </div>
         </div>
       </div>
     </div>
   );
 };
+
+
+
+const navItem = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+  {
+    name: "Services",
+    path: "/services",
+  },
+  {
+    name: "Blog",
+    path: "/blog",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
+];
 
 export default Navbar;

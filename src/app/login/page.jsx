@@ -1,9 +1,32 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { signIn } from "next-auth/react"
 import { BsGithub, BsGoogle } from "react-icons/bs";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  /* eslint-disable */
+  const router = useRouter()
+
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const resp = await signIn("credentials", {
+      email,
+      password,
+      redirect : false,
+    })
+    if(resp.status === 200){
+      router.push('/')
+    }
+    console.log(resp);
+  }
+
+
   return (
     <div className="container mx-auto my-24">
       <div className="grid grid-cols-2 gap-6">
@@ -17,13 +40,14 @@ const page = () => {
         </div>
         <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
             <h1 className="text-5xl font-semibold text-center pt-12">Login</h1>
-            <form className=" mx-12">
+            <form onSubmit={handleLogin} className=" mx-12">
             <div className="form-control my-6">
                 <label className="label">
                 <span className="label-text font-semibold text-[18px]">Email</span>
                 </label>
                 <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -35,6 +59,7 @@ const page = () => {
                 </label>
                 <input
                 type="password"
+                name="password"
                 placeholder="Your password"
                 className="input input-bordered"
                 required
@@ -50,7 +75,7 @@ const page = () => {
 
             </div>
             </form>
-            <p className="text-center mt-6 font-semibold">Have an account? <Link href='singup' className="text-[#FF3811]">Login</Link> </p>
+            <p className="text-center mt-6 font-semibold">Have an account? <Link href='singup' className="text-[#FF3811]">SingUp</Link> </p>
         </div>
       </div>
 
